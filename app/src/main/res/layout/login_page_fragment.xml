@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/holo_blue_light"
+              android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/login_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:foregroundGravity="center_vertical|fill_horizontal"
+        android:hint="Login"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:ems="10"
+        android:foregroundGravity="center_vertical|center_horizontal"
+        android:hint="Password"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/check_input_data_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="30dp"
+        android:background="?attr/actionModeSplitBackground"
+        android:elevation="0dp"
+        android:text="SignIn"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"/>
+
+    <TextView
+        android:id="@+id/signature_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="200dp"
+        android:foregroundGravity="bottom"
+        android:text="TextView"
+        android:textAlignment="center"
+        tools:text="Markin innovations, 2017"/>
+
+</LinearLayout>
