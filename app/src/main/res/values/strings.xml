@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Trelolo</string>
+    <string name="text_for_check_input_data_button">SignIn</string>
+    <string name="text_for_signature_textView">Markin innovations, 2017</string>
 </resources>

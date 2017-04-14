@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_for_widgets_on_login_page_fragment_view">100dp</dimen>
+    <dimen name="margin_top_for_check_input_data_button">30dp</dimen>
+    <dimen name="margin_top_for_signature_textView">200dp</dimen>
+</resources>

@@ -1,4 +1,4 @@
-package com.example.sbt_markin_aa.trelolo.activities;
+package com.example.sbt_markin_aa.trelolo.presenter.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
