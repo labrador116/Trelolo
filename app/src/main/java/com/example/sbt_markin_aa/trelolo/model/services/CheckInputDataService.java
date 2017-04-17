@@ -12,17 +12,20 @@ import com.example.sbt_markin_aa.trelolo.model.database.cursor_wrappers.LoginTab
 
 public class CheckInputDataService {
 
-    public static void checkData(Context context, String mLogin, String mPassword){
+    public static boolean checkData(Context context, String mLogin, String mPassword){
         if(CheckInputDataService.checkInputDataLogin(context,mLogin)){
             if (CheckInputDataService.checkInputPassword(context, mPassword))
             {
                 Toast.makeText(context, "Person authorized",Toast.LENGTH_SHORT).show();
+                return true;
             }else{
                 Toast.makeText(context, "Person isn't authorized",Toast.LENGTH_SHORT).show();
+                return false;
             }
         }
         else{
             Toast.makeText(context, "Person isn't authorized",Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 

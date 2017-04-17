@@ -1,6 +1,7 @@
 package com.example.sbt_markin_aa.trelolo.presenter.fragments;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import com.example.sbt_markin_aa.trelolo.model.data_bindings.CheckFromLoginTable
 import com.example.sbt_markin_aa.trelolo.model.database.data_base_helper.TreloloDBHelper;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema;
 import com.example.sbt_markin_aa.trelolo.model.services.CheckInputDataService;
+import com.example.sbt_markin_aa.trelolo.presenter.activities.StickerPageActivity;
 
 /**
  * Created by sbt-markin-aa on 13.04.17.
@@ -49,7 +51,12 @@ public class LoginPageFragment extends Fragment
             public void onClick(View v) {
                 mLogin=mLoginEditText.getText().toString();
                 mPassword = mPasswordEditText.getText().toString();
-                CheckInputDataService.checkData(getContext(),mLogin,mPassword);
+               boolean checkResult = CheckInputDataService.checkData(getContext(),mLogin,mPassword);
+
+                if(checkResult){
+                    Intent intent = new Intent(getContext(),StickerPageActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

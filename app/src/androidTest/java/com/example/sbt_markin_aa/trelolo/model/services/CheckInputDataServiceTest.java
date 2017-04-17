@@ -15,12 +15,12 @@ import org.mockito.Mockito;
 public class CheckInputDataServiceTest {
 
     @Test
-    public void checkDataTestPositiveResult(){
+    public void checkInputDataLoginTestPositiveResult(){
         boolean result= CheckInputDataService.checkInputDataLogin(InstrumentationRegistry.getTargetContext(),"test");
         Assert.assertSame(true,result);
     }
     @Test
-    public void checkDataTestNegativeResult(){
+    public void checkInputDataLoginTestNegativeResult(){
         boolean result= CheckInputDataService.checkInputDataLogin(InstrumentationRegistry.getTargetContext(),"admin");
         Assert.assertSame(false,result);
     }

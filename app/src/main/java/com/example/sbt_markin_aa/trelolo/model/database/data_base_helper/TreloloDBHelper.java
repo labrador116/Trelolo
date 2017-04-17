@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.sbt_markin_aa.trelolo.model.data_bindings.CheckFromLoginTableDataBinding;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.LoginTable;
+import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.PersonTable;
+import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.StickerTable;
 
 /**
  * Created by sbt-markin-aa on 13.04.17.
@@ -32,13 +34,33 @@ public class TreloloDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + LoginTable.NAME + " ( "+
 
+        db.execSQL("create table " + PersonTable.NAME+
+                " ( "+
+                "_id integer primary key autoincrement, "+
+                PersonTable.Columns.Name + ", "+
+                PersonTable.Columns.SURNAME +
+                " ) "
+        );
+        db.execSQL("create table " + LoginTable.NAME +
+                " ( "+
                         "_id integer primary key autoincrement, "+
+                        LoginTable.Columns.PERSON_ID + ", "+
                         LoginTable.Columns.LOGIN + ", "+
                         LoginTable.Columns.PASSWORD +
                 " ) "
         );
+        db.execSQL("create table "+ StickerTable.NAME +
+                " ( "+
+                "_id integer primary key autoincrement, "+
+                StickerTable.Columns.AUTHOR_ID +", "+
+                StickerTable.Columns.TITLE +", "+
+                StickerTable.Columns.TEXT +
+                " ) "
+        );
+
+
+
         CheckFromLoginTableDataBinding.setTestDataInDB(db);
     }
 

@@ -3,6 +3,8 @@ package com.example.sbt_markin_aa.trelolo.model.database.cursor_wrappers;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
+import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema;
+
 /**
  * Created by sbt-markin-aa on 13.04.17.
  */
@@ -18,7 +20,6 @@ public class LoginTableCursorWrapper extends CursorWrapper {
     }
 
     public boolean checkPerson(){
-
       if(getCount()>0) {
           int id = getInt(getColumnIndex("_id"));
 
