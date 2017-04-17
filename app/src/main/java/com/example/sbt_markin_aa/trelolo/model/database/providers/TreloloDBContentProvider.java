@@ -10,20 +10,23 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.example.sbt_markin_aa.trelolo.model.database.data_base_helper.TreloloDBHelper;
+import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema;
 
 /**
  * Created by sbt-markin-aa on 13.04.17.
  */
 
-public class LoginTableContentProvider extends ContentProvider {
+public class TreloloDBContentProvider extends ContentProvider {
     private static final UriMatcher sURI_MATCHER;
-    private static final String AUTHORITY = "com.example.sbt_markin_aa.trelolo.model.database.providers.LoginTableContentProvider";
+    private static final String AUTHORITY = "com.example.sbt_markin_aa.trelolo.model.database.providers.TreloloDBContentProvider";
 
     private SQLiteDatabase mDatabase;
 
     static{
         sURI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         sURI_MATCHER.addURI(AUTHORITY,"login_table",0);
+        sURI_MATCHER.addURI(AUTHORITY, TreloloDBSchema.StickerTable.NAME,1);
+        sURI_MATCHER.addURI(AUTHORITY,"login_table/person_id",2);
     }
 
     @Override
@@ -35,14 +38,31 @@ public class LoginTableContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        Cursor cursor = mDatabase.query(uri.getLastPathSegment(),
-                projection,
-                selection+"=?",
-                selectionArgs,
-                null,
-                null,
-                null
-        );
+        Cursor cursor;
+
+        switch (sURI_MATCHER.match(uri)) {
+            case 2:
+                cursor = mDatabase.query(TreloloDBSchema.LoginTable.NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        null
+                );
+                break;
+
+            default:
+                cursor = mDatabase.query(uri.getLastPathSegment(),
+                        projection,
+                        selection + "=?",
+                        selectionArgs,
+                        null,
+                        null,
+                        null
+                );
+                break;
+        }
         return cursor;
     }
 

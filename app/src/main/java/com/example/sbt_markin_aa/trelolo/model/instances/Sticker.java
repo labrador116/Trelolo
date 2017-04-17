@@ -9,6 +9,12 @@ public class Sticker {
     private String mTitle;
     private String mText;
 
+    public Sticker(int authorID, String title, String text) {
+        mAuthorID = authorID;
+        mTitle = title;
+        mText = text;
+    }
+
     public String getTitle() {
         return mTitle;
     }

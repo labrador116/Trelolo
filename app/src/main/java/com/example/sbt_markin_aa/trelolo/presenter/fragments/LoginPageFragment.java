@@ -26,6 +26,8 @@ import com.example.sbt_markin_aa.trelolo.presenter.activities.StickerPageActivit
 
 public class LoginPageFragment extends Fragment
 {
+    public static final String PERSON_ID = "personID";
+
     private EditText mLoginEditText;
     private EditText mPasswordEditText;
     private Button mCheckInputDataButton;
@@ -39,7 +41,7 @@ public class LoginPageFragment extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_page_fragment,container,false);
 
         mLoginEditText= (EditText) view.findViewById(R.id.login_editText);
@@ -54,7 +56,11 @@ public class LoginPageFragment extends Fragment
                boolean checkResult = CheckInputDataService.checkData(getContext(),mLogin,mPassword);
 
                 if(checkResult){
+
+                    int id = CheckFromLoginTableDataBinding.getPersonId(mLogin, mPassword, getContext());
+
                     Intent intent = new Intent(getContext(),StickerPageActivity.class);
+                    intent.putExtra(PERSON_ID,id);
                     startActivity(intent);
                 }
             }

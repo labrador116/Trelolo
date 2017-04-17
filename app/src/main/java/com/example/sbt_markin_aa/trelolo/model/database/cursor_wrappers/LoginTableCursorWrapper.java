@@ -28,4 +28,13 @@ public class LoginTableCursorWrapper extends CursorWrapper {
           return false;
       }
     }
+
+    public int getIdPerson(){
+        if(getCount()>0){
+            int personId = getInt(getColumnIndex(TreloloDBSchema.LoginTable.Columns.PERSON_ID));
+            return personId;
+        }else{
+            return 0;
+        }
+    }
 }

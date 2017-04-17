@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.sbt_markin_aa.trelolo">
 
-    <permission android:name="com.example.sbt_markin_aa.trelolo.model.database.providers.LoginTableContentProvider.READ_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="com.example.sbt_markin_aa.trelolo.model.database.providers.TreloloDBContentProvider.READ_DATABASE" android:protectionLevel="normal"/>
 
     <application
         android:allowBackup="true"
@@ -18,9 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".presenter.activities.StickerPageActivity">
+
+        </activity>
+
         <provider
-            android:authorities="com.example.sbt_markin_aa.trelolo.model.database.providers.LoginTableContentProvider"
-            android:name=".model.database.providers.LoginTableContentProvider"
+            android:authorities="com.example.sbt_markin_aa.trelolo.model.database.providers.TreloloDBContentProvider"
+            android:name=".model.database.providers.TreloloDBContentProvider"
             android:exported="false"
             android:writePermission="com.example.sbt_markin_aa.trelolo.database.providers.LoginTableContentProvider.READ_DATABASE">
         </provider>

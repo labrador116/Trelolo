@@ -10,6 +10,7 @@ import com.example.sbt_markin_aa.trelolo.model.database.cursor_wrappers.LoginTab
 import com.example.sbt_markin_aa.trelolo.model.database.cursor_wrappers.PersonTableCursorWrapper;
 import com.example.sbt_markin_aa.trelolo.model.database.data_base_helper.TreloloDBHelper;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema;
+import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.LoginTable;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.PersonTable;
 
 /**
@@ -19,9 +20,9 @@ import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.P
 public class CheckFromLoginTableDataBinding {
     public static LoginTableCursorWrapper checkPersonLogin(Context context, String login){
        Cursor cursor= context.getContentResolver().query(
-                Uri.parse("content://com.example.sbt_markin_aa.trelolo.model.database.providers.LoginTableContentProvider/login_table"),
+                Uri.parse("content://com.example.sbt_markin_aa.trelolo.model.database.providers.TreloloDBContentProvider/login_table"),
                 new String[]{"_id"},
-                TreloloDBSchema.LoginTable.Columns.LOGIN,
+                LoginTable.Columns.LOGIN,
                 new  String[]{login},
                 null
         );
@@ -30,13 +31,27 @@ public class CheckFromLoginTableDataBinding {
 
     public static LoginTableCursorWrapper checkPersonPassword(Context context, String password){
         Cursor cursor= context.getContentResolver().query(
-                Uri.parse("content://com.example.sbt_markin_aa.trelolo.model.database.providers.LoginTableContentProvider/login_table"),
+                Uri.parse("content://com.example.sbt_markin_aa.trelolo.model.database.providers.TreloloDBContentProvider/login_table"),
                 new String[]{"_id"},
-                TreloloDBSchema.LoginTable.Columns.PASSWORD,
+                LoginTable.Columns.PASSWORD,
                 new  String[]{password},
                 null
         );
         return new LoginTableCursorWrapper(cursor);
+    }
+
+    public static int getPersonId(String login, String password, Context context){
+        Cursor cursor = context.getContentResolver().query(
+                Uri.parse("content://com.example.sbt_markin_aa.trelolo.model.database.providers.TreloloDBContentProvider/login_table/person_id"),
+                new String[]{LoginTable.Columns.PERSON_ID},
+                LoginTable.Columns.LOGIN +"=? and "+ LoginTable.Columns.PASSWORD +"=?",
+                new String[]{login,password},
+                null
+        );
+
+        cursor.moveToFirst();
+
+       return new LoginTableCursorWrapper(cursor).getIdPerson();
     }
 
     public static void setTestDataInDB(SQLiteDatabase db){
@@ -55,17 +70,17 @@ public class CheckFromLoginTableDataBinding {
         /*********************************************/
         values = new ContentValues();
         int personID=1;
-        values.put(TreloloDBSchema.LoginTable.Columns.PERSON_ID, personID);
-        values.put(TreloloDBSchema.LoginTable.Columns.LOGIN, "test");
-        values.put(TreloloDBSchema.LoginTable.Columns.PASSWORD, "test");
-        db.insert(TreloloDBSchema.LoginTable.NAME,null,values);
+        values.put(LoginTable.Columns.PERSON_ID, personID);
+        values.put(LoginTable.Columns.LOGIN, "test");
+        values.put(LoginTable.Columns.PASSWORD, "test");
+        db.insert(LoginTable.NAME,null,values);
         /*********************************************/
         values = new ContentValues();
         personID=2;
-        values.put(TreloloDBSchema.LoginTable.Columns.PERSON_ID, personID);
-        values.put(TreloloDBSchema.LoginTable.Columns.LOGIN, "qwert");
-        values.put(TreloloDBSchema.LoginTable.Columns.PASSWORD, "qwert");
-        db.insert(TreloloDBSchema.LoginTable.NAME,null,values);
+        values.put(LoginTable.Columns.PERSON_ID, personID);
+        values.put(LoginTable.Columns.LOGIN, "qwert");
+        values.put(LoginTable.Columns.PASSWORD, "qwert");
+        db.insert(LoginTable.NAME,null,values);
         /*********************************************/
 
     }
