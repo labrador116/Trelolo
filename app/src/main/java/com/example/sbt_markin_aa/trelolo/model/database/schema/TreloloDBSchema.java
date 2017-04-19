@@ -34,6 +34,15 @@ public class TreloloDBSchema {
             public static final String AUTHOR_ID = "author_id";
             public static final String TITLE = "title";
             public static final String TEXT = "text";
+            public static final String BOARD_ID = "board_id";
+        }
+    }
+
+    public static final class BoardTable{
+        public static final String NAME = "board_table";
+
+        public static final class Columns {
+            public static final String PERSON_ID = "person_id";
         }
     }
 }

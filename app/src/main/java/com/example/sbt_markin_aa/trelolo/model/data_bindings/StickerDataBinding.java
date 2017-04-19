@@ -16,14 +16,14 @@ import java.util.List;
  */
 
 public class StickerDataBinding {
-    public static List<Sticker> getStickers(int personID, Context context){
+    public static List<Sticker> getAllStickersForPersonBoardById(int personID, int boardId, Context context){
         List<Sticker> stickers = new ArrayList<>();
 
         Cursor cursor = context.getContentResolver().query(
-                Uri.parse("content://com.example.sbt_markin_aa.trelolo.model.database.providers.TreloloDBContentProvider/"+ TreloloDBSchema.StickerTable.NAME),
+                Uri.parse("content://com.example.sbt_markin_aa.trelolo.model.database.providers.TreloloDBContentProvider/"+ TreloloDBSchema.StickerTable.NAME+"/all_stickers_from_board"),
                 null,
-                TreloloDBSchema.StickerTable.Columns.AUTHOR_ID,
-                new String[]{String.valueOf(personID)},
+                TreloloDBSchema.StickerTable.Columns.AUTHOR_ID+"=? and "+ TreloloDBSchema.StickerTable.Columns.BOARD_ID+"=?",
+                new String[]{String.valueOf(personID), String.valueOf(boardId)},
                 null
         );
 

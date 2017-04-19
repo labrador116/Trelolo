@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.sbt_markin_aa.trelolo.model.data_bindings.CheckFromLoginTableDataBinding;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema;
+import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.BoardTable;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.LoginTable;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.PersonTable;
 import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema.StickerTable;
@@ -55,9 +56,17 @@ public class TreloloDBHelper extends SQLiteOpenHelper {
                 "_id integer primary key autoincrement, "+
                 StickerTable.Columns.AUTHOR_ID +", "+
                 StickerTable.Columns.TITLE +", "+
-                StickerTable.Columns.TEXT +
+                StickerTable.Columns.TEXT + ", "+
+                StickerTable.Columns.BOARD_ID +
                 " ) "
         );
+        db.execSQL("create table "+ BoardTable.NAME +
+                " ( "+
+                "_id integer primary key autoincrement, "+
+                BoardTable.Columns.PERSON_ID +
+                " ) "
+        );
+
 
 
 

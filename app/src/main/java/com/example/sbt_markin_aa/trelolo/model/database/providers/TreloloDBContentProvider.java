@@ -27,6 +27,8 @@ public class TreloloDBContentProvider extends ContentProvider {
         sURI_MATCHER.addURI(AUTHORITY,"login_table",0);
         sURI_MATCHER.addURI(AUTHORITY, TreloloDBSchema.StickerTable.NAME,1);
         sURI_MATCHER.addURI(AUTHORITY,"login_table/person_id",2);
+        sURI_MATCHER.addURI(AUTHORITY, TreloloDBSchema.StickerTable.NAME+"/all_stickers_from_board",3);
+        sURI_MATCHER.addURI(AUTHORITY, TreloloDBSchema.BoardTable.NAME,4);
     }
 
     @Override
@@ -51,11 +53,21 @@ public class TreloloDBContentProvider extends ContentProvider {
                         null
                 );
                 break;
+            case 3:
+                cursor = mDatabase.query(TreloloDBSchema.LoginTable.NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        null
+                );
+                break;
 
             default:
                 cursor = mDatabase.query(uri.getLastPathSegment(),
                         projection,
-                        selection + "=?",
+                        selection += "=?",
                         selectionArgs,
                         null,
                         null,
