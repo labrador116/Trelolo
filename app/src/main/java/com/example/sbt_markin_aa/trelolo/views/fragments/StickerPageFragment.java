@@ -1,13 +1,8 @@
-package com.example.sbt_markin_aa.trelolo.presenter.fragments;
+package com.example.sbt_markin_aa.trelolo.views.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-
-import com.example.sbt_markin_aa.trelolo.model.instances.Sticker;
-
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by sbt-markin-aa on 17.04.17.

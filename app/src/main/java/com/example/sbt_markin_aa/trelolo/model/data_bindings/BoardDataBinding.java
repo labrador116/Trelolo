@@ -30,7 +30,6 @@ public class BoardDataBinding {
                 null
         );
 
-        cursor.moveToFirst();
         BoardTableCursorWrapper cursorWrapper = new BoardTableCursorWrapper(cursor);
 
         try{

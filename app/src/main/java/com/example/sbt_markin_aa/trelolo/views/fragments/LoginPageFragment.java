@@ -1,8 +1,6 @@
-package com.example.sbt_markin_aa.trelolo.presenter.fragments;
+package com.example.sbt_markin_aa.trelolo.views.fragments;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,14 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.sbt_markin_aa.trelolo.R;
 import com.example.sbt_markin_aa.trelolo.model.data_bindings.CheckFromLoginTableDataBinding;
-import com.example.sbt_markin_aa.trelolo.model.database.data_base_helper.TreloloDBHelper;
-import com.example.sbt_markin_aa.trelolo.model.database.schema.TreloloDBSchema;
 import com.example.sbt_markin_aa.trelolo.model.services.CheckInputDataService;
-import com.example.sbt_markin_aa.trelolo.presenter.activities.StickerPageActivity;
+import com.example.sbt_markin_aa.trelolo.views.activities.StickerPageActivity;
 
 /**
  * Created by sbt-markin-aa on 13.04.17.

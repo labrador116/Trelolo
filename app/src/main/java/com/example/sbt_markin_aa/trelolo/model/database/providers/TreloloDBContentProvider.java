@@ -67,7 +67,7 @@ public class TreloloDBContentProvider extends ContentProvider {
             default:
                 cursor = mDatabase.query(uri.getLastPathSegment(),
                         projection,
-                        selection += "=?",
+                        selection + " =?",
                         selectionArgs,
                         null,
                         null,
